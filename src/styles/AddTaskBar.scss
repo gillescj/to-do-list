@@ -1,0 +1,22 @@
+.add-task-bar {
+    display: grid;
+    grid-template-columns: auto auto;
+    input {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+        border: none;
+    }
+    button {
+        border: none;
+        background: rgba(0, 0, 0, 0.918);
+        padding: 0.75rem 1rem;
+        border-radius: 0.2rem;
+        margin: 0.5rem;
+        color: white;
+        cursor: pointer;
+        &:hover {
+            background: rgba(0, 0, 0, 0.794);
+        }
+    }
+}
