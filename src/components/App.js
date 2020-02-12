@@ -9,13 +9,22 @@ class App extends React.Component {
 
     onAddTaskButtonClick = taskTerm => {
         if (!taskTerm) return;
-        if (this.state.tasks.find(el => el === taskTerm)) return;
-        this.setState({ tasks: [...this.state.tasks, taskTerm] });
+        if (this.state.tasks.find(el => el.name === taskTerm)) return;
+        this.setState({
+            tasks: [...this.state.tasks, { name: taskTerm, complete: false }]
+        });
     };
 
-    onTaskItemClick = task => {
-        const newTasks = this.state.tasks.filter(el => el !== task);
+    onDeleteItemClick = task => {
+        const newTasks = this.state.tasks.filter(el => el.name !== task);
 
+        this.setState({ tasks: newTasks });
+    };
+
+    onTaskItemClick = taskName => {
+        const newTasks = [...this.state.tasks];
+        const taskIndex = newTasks.findIndex(task => task.name === taskName);
+        newTasks[taskIndex].complete = !newTasks[taskIndex].complete;
         this.setState({ tasks: newTasks });
     };
 
@@ -25,6 +34,7 @@ class App extends React.Component {
                 <AddTaskBar onAddTaskButtonClick={this.onAddTaskButtonClick} />
                 <TaskList
                     tasks={this.state.tasks}
+                    onDeleteItemClick={this.onDeleteItemClick}
                     onTaskItemClick={this.onTaskItemClick}
                 />
             </div>
