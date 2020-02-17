@@ -11,7 +11,7 @@ class App extends React.Component {
         if (!taskTerm) return;
         if (this.state.tasks.find(el => el.name === taskTerm)) return;
         this.setState({
-            tasks: [...this.state.tasks, { name: taskTerm, complete: false }]
+            tasks: [{ name: taskTerm, complete: false }, ...this.state.tasks]
         });
     };
 

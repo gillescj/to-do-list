@@ -1,10 +1,9 @@
 .container {
     display: grid;
     grid-gap: 1rem;
+    grid-template-columns: minmax(auto, 30rem);
     justify-content: center;
     justify-items: center;
-    align-content: center;
     margin: auto;
-    height: 100vh;
-    max-width: 30rem;
+    padding: 1rem;
 }

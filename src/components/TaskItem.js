@@ -1,5 +1,5 @@
 import '../styles/TaskItem.scss';
-import { ReactComponent as Logo } from '../assets/trash-bin.svg';
+import { ReactComponent as TrashLogo } from '../assets/trash-bin.svg';
 
 import React from 'react';
 
@@ -14,7 +14,7 @@ const TaskItem = ({ task, onDeleteItemClick, onTaskItemClick }) => {
             >
                 {task.name}
             </div>
-            <Logo onClick={() => onDeleteItemClick(task.name)} title="delete icon" />
+            <TrashLogo onClick={() => onDeleteItemClick(task.name)} title="delete icon" />
         </div>
     );
 };
