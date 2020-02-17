@@ -1,0 +1,21 @@
+.step-item {
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    cursor: pointer;
+    .delete-step {
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}
+
+@media (hover: hover) {
+    .step-item {
+        .delete-step {
+            &:hover {
+                color: red;
+            }
+        }
+    }
+}

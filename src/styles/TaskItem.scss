@@ -1,7 +1,7 @@
 .task-item {
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     font-size: 1.5rem;
     padding: 0.5rem 0;
     .complete {
@@ -14,18 +14,34 @@
         padding: 0.5rem;
         cursor: pointer;
         align-self: center;
-        &:hover {
-            color: rgb(35, 133, 5);
-        }
         border-bottom: 1px solid rgba(255, 255, 255, 0.287);
     }
     svg {
         fill: #fff;
         align-self: center;
         cursor: pointer;
-        &:hover {
-            transform: scale(1.2);
-            transition: transform 0.1s;
+    }
+    .task-steps {
+        grid-column: 1 /-1;
+        list-style: none;
+        font-size: 1rem;
+        padding-left: 1.5rem;
+        color: rgba(255, 255, 255, 0.75);
+    }
+}
+
+@media (hover: hover) {
+    .task-item {
+        .task-item-content {
+            &:hover {
+                color: rgb(35, 133, 5);
+            }
+        }
+        svg {
+            &:hover {
+                transform: scale(1.2);
+                transition: transform 0.1s;
+            }
         }
     }
 }

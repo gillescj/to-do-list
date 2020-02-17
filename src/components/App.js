@@ -10,8 +10,21 @@ class App extends React.Component {
     onAddTaskButtonClick = taskTerm => {
         if (!taskTerm) return;
         if (this.state.tasks.find(el => el.name === taskTerm)) return;
+        const taskItem = {
+            name: taskTerm,
+            complete: false,
+            steps: [
+                { name: "1: Don't eat the cake", complete: false },
+                { name: '2: The cake is a lie', complete: false },
+                {
+                    name:
+                        '3: Longer step to see if more text still looks nice inside steps container',
+                    complete: false
+                }
+            ]
+        };
         this.setState({
-            tasks: [{ name: taskTerm, complete: false }, ...this.state.tasks]
+            tasks: [taskItem, ...this.state.tasks]
         });
     };
 
@@ -28,6 +41,26 @@ class App extends React.Component {
         this.setState({ tasks: newTasks });
     };
 
+    onStepItemClick = (stepName, taskName) => {
+        const newTasks = [...this.state.tasks];
+        const taskIndex = newTasks.findIndex(task => task.name === taskName);
+        const stepIndex = newTasks[taskIndex].steps.findIndex(
+            step => step.name === stepName
+        );
+        newTasks[taskIndex].steps[stepIndex].complete = !newTasks[taskIndex].steps[
+            stepIndex
+        ].complete;
+        this.setState({ tasks: newTasks });
+    };
+
+    onStepItemDelete = (stepName, taskName) => {
+        const newTasks = [...this.state.tasks];
+        const taskIndex = newTasks.findIndex(task => task.name === taskName);
+        const newSteps = newTasks[taskIndex].steps.filter(step => step.name !== stepName);
+        newTasks[taskIndex].steps = newSteps;
+        this.setState({ tasks: newTasks });
+    };
+
     render() {
         return (
             <div className="container">
@@ -36,6 +69,8 @@ class App extends React.Component {
                     tasks={this.state.tasks}
                     onDeleteItemClick={this.onDeleteItemClick}
                     onTaskItemClick={this.onTaskItemClick}
+                    onStepItemClick={this.onStepItemClick}
+                    onStepItemDelete={this.onStepItemDelete}
                 />
             </div>
         );
