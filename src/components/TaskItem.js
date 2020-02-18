@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import TextareaAutosize from 'react-textarea-autosize';
 import '../styles/TaskItem.scss';
 import { ReactComponent as TrashLogo } from '../assets/trash-bin.svg';
 import { ReactComponent as AddLogo } from '../assets/add.svg';
@@ -21,7 +22,7 @@ class TaskItem extends React.Component {
         this.setState({ taskTerm: event.target.value });
     };
 
-    onEnterClick = event => {
+    onKeyDown = event => {
         if (event.key === 'Enter') {
             this.props.onEditTask(event, this.state.oldTaskTerm);
             this.setState({
@@ -67,12 +68,13 @@ class TaskItem extends React.Component {
                             : 'task-item-content'
                     }
                 >
-                    <input
+                    <TextareaAutosize
                         onChange={this.onInputChange}
-                        onKeyDown={this.onEnterClick}
+                        onKeyDown={this.onKeyDown}
                         onBlur={this.onTaskBlur}
                         type="text"
                         value={this.state.taskTerm}
+                        ref={this.textAreaRef}
                     />
                 </div>
                 <CheckmarkLogo

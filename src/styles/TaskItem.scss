@@ -1,11 +1,11 @@
 .task-item {
     display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: minmax(1rem, 1fr) auto auto auto;
+    grid-column-gap: 1rem;
+    grid-template-columns: minmax(1rem, 1fr) repeat(3, 1.3rem);
 
     padding: 0.5rem 0;
 
-    .task-item-content input {
+    .task-item-content textarea {
         resize: none;
         word-wrap: break-word;
         word-break: break-all;
@@ -15,10 +15,11 @@
         border: none;
         background: none;
         color: white;
-        font-size: 1.3rem;
+        font-size: 1.35rem;
         width: 100%;
+        overflow: hidden;
     }
-    .complete input {
+    .complete textarea {
         text-decoration: line-through;
         color: rgb(29, 29, 29);
     }

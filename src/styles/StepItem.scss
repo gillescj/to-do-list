@@ -4,11 +4,12 @@
     grid-template-columns: auto 1fr auto;
     align-items: center;
     align-content: center;
-    .step-item-content input {
+    .step-item-content textarea {
+        resize: none;
         cursor: pointer;
         border: none;
         background: none;
-        color: white;
+        color: rgba(255, 255, 255, 0.9);
         padding: 0.5rem;
         font-size: 1rem;
         width: 100%;
@@ -25,7 +26,7 @@
         font-size: 1.15rem;
         cursor: pointer;
     }
-    .complete input {
+    .complete textarea {
         text-decoration: line-through;
         color: rgb(29, 29, 29);
     }

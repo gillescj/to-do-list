@@ -1,4 +1,6 @@
 import '../styles/StepItem.scss';
+import TextareaAutosize from 'react-textarea-autosize';
+
 import React from 'react';
 
 class StepItem extends React.Component {
@@ -54,7 +56,7 @@ class StepItem extends React.Component {
                             : 'step-item-content'
                     }
                 >
-                    <input
+                    <TextareaAutosize
                         onChange={this.onInputChange}
                         onKeyDown={this.onEnterClick}
                         onBlur={this.onStepBlur}
