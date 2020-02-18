@@ -7,8 +7,11 @@ const TaskList = ({
     tasks,
     onDeleteItemClick,
     onTaskItemClick,
-    onStepItemClick,
-    onStepItemDelete
+    onStepItemDelete,
+    onEditTask,
+    onStepItemComplete,
+    onEditStep,
+    onAddStep
 }) => {
     if (!tasks) return;
     const renderedTaskList = tasks.map(task => {
@@ -16,8 +19,11 @@ const TaskList = ({
             <TaskItem
                 onDeleteItemClick={onDeleteItemClick}
                 onTaskItemClick={onTaskItemClick}
-                onStepItemClick={onStepItemClick}
                 onStepItemDelete={onStepItemDelete}
+                onEditTask={onEditTask}
+                onStepItemComplete={onStepItemComplete}
+                onEditStep={onEditStep}
+                onAddStep={onAddStep}
                 key={task.name}
                 task={task}
             />

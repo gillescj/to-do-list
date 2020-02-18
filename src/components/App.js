@@ -1,4 +1,5 @@
 import '../styles/App.scss';
+import _ from 'lodash';
 
 import React from 'react';
 import AddTaskBar from './AddTaskBar';
@@ -13,19 +14,22 @@ class App extends React.Component {
         const taskItem = {
             name: taskTerm,
             complete: false,
-            steps: [
-                { name: "1: Don't eat the cake", complete: false },
-                { name: '2: The cake is a lie', complete: false },
-                {
-                    name:
-                        '3: Longer step to see if more text still looks nice inside steps container',
-                    complete: false
-                }
-            ]
+            steps: []
         };
         this.setState({
             tasks: [taskItem, ...this.state.tasks]
         });
+    };
+
+    onEditTask = (event, taskName) => {
+        const newTaskName = event.target.value;
+        const newTasks = this.state.tasks.map(task => {
+            if (task.name === taskName) {
+                return { ...task, name: newTaskName };
+            }
+            return task;
+        });
+        this.setState({ tasks: newTasks });
     };
 
     onDeleteItemClick = task => {
@@ -41,7 +45,15 @@ class App extends React.Component {
         this.setState({ tasks: newTasks });
     };
 
-    onStepItemClick = (stepName, taskName) => {
+    onStepItemDelete = (stepName, taskName) => {
+        const newTasks = [...this.state.tasks];
+        const taskIndex = newTasks.findIndex(task => task.name === taskName);
+        const newSteps = newTasks[taskIndex].steps.filter(step => step.name !== stepName);
+        newTasks[taskIndex].steps = newSteps;
+        this.setState({ tasks: newTasks });
+    };
+
+    onStepItemComplete = (stepName, taskName) => {
         const newTasks = [...this.state.tasks];
         const taskIndex = newTasks.findIndex(task => task.name === taskName);
         const stepIndex = newTasks[taskIndex].steps.findIndex(
@@ -53,11 +65,23 @@ class App extends React.Component {
         this.setState({ tasks: newTasks });
     };
 
-    onStepItemDelete = (stepName, taskName) => {
-        const newTasks = [...this.state.tasks];
+    onEditStep = (event, stepName, taskName) => {
+        const newTasks = this.state.tasks;
+        const newStepName = event.target.value;
         const taskIndex = newTasks.findIndex(task => task.name === taskName);
-        const newSteps = newTasks[taskIndex].steps.filter(step => step.name !== stepName);
-        newTasks[taskIndex].steps = newSteps;
+        const stepIndex = newTasks[taskIndex].steps.findIndex(
+            step => step.name === stepName
+        );
+
+        newTasks[taskIndex].steps[stepIndex].name = newStepName;
+        this.setState({ tasks: newTasks });
+    };
+
+    onAddStep = task => {
+        const newTasks = this.state.tasks;
+        const newStep = { id: _.uniqueId(), name: '', complete: false };
+        const taskIndex = newTasks.findIndex(el => el.name === task.name);
+        newTasks[taskIndex].steps.push(newStep);
         this.setState({ tasks: newTasks });
     };
 
@@ -69,8 +93,11 @@ class App extends React.Component {
                     tasks={this.state.tasks}
                     onDeleteItemClick={this.onDeleteItemClick}
                     onTaskItemClick={this.onTaskItemClick}
-                    onStepItemClick={this.onStepItemClick}
                     onStepItemDelete={this.onStepItemDelete}
+                    onStepItemComplete={this.onStepItemComplete}
+                    onEditTask={this.onEditTask}
+                    onEditStep={this.onEditStep}
+                    onAddStep={this.onAddStep}
                 />
             </div>
         );

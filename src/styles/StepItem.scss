@@ -1,12 +1,32 @@
 .step-item {
     display: grid;
-    grid-gap: 0.5rem;
-    grid-template-columns: 1fr auto;
+    grid-gap: 0.7rem;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    cursor: pointer;
+    align-content: center;
+    .step-item-content input {
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: white;
+        padding: 0.5rem;
+        width: 100%;
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    }
+
     .delete-step {
         font-size: 1.5rem;
         cursor: pointer;
+    }
+    .complete-step {
+        font-size: 1.15rem;
+        cursor: pointer;
+    }
+    .complete input {
+        text-decoration: line-through;
+        color: rgb(29, 29, 29);
     }
 }
 
@@ -15,6 +35,11 @@
         .delete-step {
             &:hover {
                 color: red;
+            }
+        }
+        .complete-step {
+            &:hover {
+                color: green;
             }
         }
     }

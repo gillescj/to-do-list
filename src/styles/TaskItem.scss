@@ -1,20 +1,26 @@
 .task-item {
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: 1fr auto auto;
-    font-size: 1.5rem;
+    grid-template-columns: minmax(1rem, 1fr) auto auto auto;
+
     padding: 0.5rem 0;
-    .complete {
-        text-decoration: line-through;
-        color: rgb(29, 29, 29);
-    }
-    .task-item-content {
+
+    .task-item-content input {
+        resize: none;
         word-wrap: break-word;
         word-break: break-all;
         padding: 0.5rem;
         cursor: pointer;
         align-self: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.287);
+        border: none;
+        background: none;
+        color: white;
+        font-size: 1.5rem;
+        width: 100%;
+    }
+    .complete input {
+        text-decoration: line-through;
+        color: rgb(29, 29, 29);
     }
     svg {
         fill: #fff;
@@ -25,8 +31,9 @@
         grid-column: 1 /-1;
         list-style: none;
         font-size: 1rem;
-        padding-left: 1.5rem;
         color: rgba(255, 255, 255, 0.75);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.287);
+        padding-bottom: 0.5rem;
     }
 }
 
