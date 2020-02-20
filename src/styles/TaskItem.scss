@@ -38,7 +38,7 @@
     }
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .task-item {
         .task-item-content {
             &:hover {
@@ -54,7 +54,7 @@
     }
 }
 
-@media (hover: none) {
+@media (hover: none) and (pointer: coarse) {
     svg {
         &:hover {
             transform: scale(1);

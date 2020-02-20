@@ -32,7 +32,7 @@
     }
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .step-item {
         .delete-step {
             &:hover {
@@ -47,7 +47,7 @@
     }
 }
 
-@media (hover: none) {
+@media (hover: none) and (pointer: coarse) {
     .step-item {
         .delete-step {
             &:hover {
