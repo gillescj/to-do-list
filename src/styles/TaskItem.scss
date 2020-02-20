@@ -53,3 +53,12 @@
         }
     }
 }
+
+@media (hover: none) {
+    svg {
+        &:hover {
+            transform: scale(1);
+            transition: none;
+        }
+    }
+}

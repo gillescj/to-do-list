@@ -46,3 +46,18 @@
         }
     }
 }
+
+@media (hover: none) {
+    .step-item {
+        .delete-step {
+            &:hover {
+                color: white;
+            }
+        }
+        .complete-step {
+            &:hover {
+                color: white;
+            }
+        }
+    }
+}
