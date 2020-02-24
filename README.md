@@ -12,5 +12,3 @@ Within root:
 npm install
 npm start
 ```
-
-Or download build and open index.html.
